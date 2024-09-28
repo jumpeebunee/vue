@@ -1,5 +1,13 @@
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {
+      name: "Bob",
+    };
+  },
+};
+</script>
 
 <template>
-  <div>HelloWorld</div>
+  <div>{{ name }}</div>
 </template>
