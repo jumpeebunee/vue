@@ -1,9 +1,10 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import App from "./Apps/App.vue";
 import Button from "./components/Button.vue";
+import SecondApp from "./Apps/SecondApp.vue";
 
 const app = createApp(App);
-const secondApp = createApp(App);
+const secondApp = createApp(SecondApp);
 
 // Captures errors from all descendant component
 app.config.errorHandler = (err) => {
