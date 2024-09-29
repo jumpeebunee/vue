@@ -11,6 +11,7 @@ export default {
         id: "secondDisabledBtn",
         disabled: true,
       },
+      attributeName: "data-testId",
     };
   },
 };
@@ -19,10 +20,13 @@ export default {
 <template>
   <h1 :class="`title-${msgId}`" :id="msgId">{{ name }}</h1>
   <p>{{ msg + ` from: ${name}` }}</p>
-  <div v-html="data"></div>
+
+  <div v-if="!disabled" v-html="data"></div>
 
   <div class="buttons">
-    <button :disabled="disabled">Main Button</button>
+    <button :[attributeName]="`mainButton`" :disabled="disabled">
+      Main Button
+    </button>
     <button v-bind="secondButtonAttr">Second Button</button>
   </div>
 </template>
