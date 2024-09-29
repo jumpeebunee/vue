@@ -10,6 +10,10 @@ const secondApp = createApp(SecondApp);
 app.config.errorHandler = (err) => {
   console.log(err);
 };
+// Restricted Globals Access
+app.config.globalProperties = {
+  window,
+};
 
 // Available for use anywhere in app
 app.component("Button", Button);

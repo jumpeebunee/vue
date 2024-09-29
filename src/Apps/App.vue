@@ -17,8 +17,8 @@ export default {
 </script>
 
 <template>
-  <h1 :id="msgId">{{ name }}</h1>
-  <p>{{ msg }}</p>
+  <h1 :class="`title-${msgId}`" :id="msgId">{{ name }}</h1>
+  <p>{{ msg + ` from: ${name}` }}</p>
   <div v-html="data"></div>
 
   <div class="buttons">
