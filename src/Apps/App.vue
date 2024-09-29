@@ -2,32 +2,32 @@
 export default {
   data() {
     return {
-      name: "Horrors",
-      msg: "Find your best horror movie",
-      msgId: 237,
-      data: `<span style="color: red">or die from scary</span>`,
-      disabled: true,
-      secondButtonAttr: {
-        id: "secondDisabledBtn",
-        disabled: true,
+      filmId: 0,
+      banner: `<div>Film Banner</div>`,
+      prevTest: "data-testId",
+      nextButtonAttr: {
+        disabled: false,
       },
-      attributeName: "data-testId",
     };
+  },
+  methods: {
+    clickPrev() {
+      this.filmId -= 1;
+    },
+    clickNext() {
+      this.filmId += 1;
+    },
   },
 };
 </script>
 
 <template>
-  <h1 :class="`title-${msgId}`" :id="msgId">{{ name }}</h1>
-  <p>{{ msg + ` from: ${name}` }}</p>
-
-  <div v-if="!disabled" v-html="data"></div>
+  <h1>Film ID: {{ filmId }}</h1>
+  <div v-html="banner"></div>
 
   <div class="buttons">
-    <button :[attributeName]="`mainButton`" :disabled="disabled">
-      Main Button
-    </button>
-    <button v-bind="secondButtonAttr">Second Button</button>
+    <button @click="clickPrev" :[prevTest]="`prevButton`">Prev</button>
+    <button @click="clickNext" v-bind="nextButtonAttr">Next</button>
   </div>
 </template>
 
