@@ -1,13 +1,25 @@
 <template>
-  <div :class="{ 'content-light': isBlackTheme }" class="content">
-    <button @click="changeTheme">Change Theme</button>
-    <h2 :class="getTitleStyles">Counter: {{ counter }}</h2>
-    <button :class="[buttonLeftClass, ...buttonPreset]" @click="clickLeft">
-      Left
-    </button>
-    <button :class="[buttonRightClass, ...buttonPreset]" @click="clickRight">
-      Right
-    </button>
+  <div
+    :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"
+    :class="{ 'content-light': isBlackTheme }"
+    class="content"
+  >
+    <div>
+      <button @click="changeTheme">Change Theme</button>
+      <h2 :class="getTitleStyles">Counter: {{ counter }}</h2>
+      <button :class="[buttonLeftClass, ...buttonPreset]" @click="clickLeft">
+        Left
+      </button>
+      <button :class="[buttonRightClass, ...buttonPreset]" @click="clickRight">
+        Right
+      </button>
+    </div>
+    <p :style="paragraphPreset">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum unde quis
+      eveniet odio. Ea exercitationem voluptas veniam, temporibus cumque,
+      deserunt ipsa corrupti asperiores in quisquam quis officia dolor sit
+      consequatur.
+    </p>
   </div>
 </template>
 
@@ -23,6 +35,11 @@ export default {
       },
       buttonRightClass: {
         "btn-red": false,
+      },
+      paragraphPreset: {
+        "font-size": "12px",
+        color: "black",
+        "line-height": "14px",
       },
     };
   },
@@ -62,6 +79,7 @@ export default {
 }
 
 .content {
+  gap: 20px;
   padding: 20px;
   border: solid 1px black;
 }
@@ -84,5 +102,10 @@ export default {
 
 .big {
   padding: 4px 20px;
+}
+
+p {
+  margin: 0;
+  width: 200px;
 }
 </style>
