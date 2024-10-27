@@ -1,6 +1,13 @@
 <template>
   <div class="content">
-    <Post v-for="post in posts" :title="post.title" :key="post.id" />
+    <Post
+      v-for="post in posts"
+      :id="post.id"
+      :key="post.id"
+      :title="post.title"
+      :likes="post.likes"
+      @onLikeClick="onLikeClick"
+    />
   </div>
 </template>
 
@@ -15,14 +22,17 @@ export default {
         {
           id: 1,
           title: "Defining a Component",
+          likes: 2,
         },
         {
           id: 2,
           title: "Using a Component",
+          likes: 0,
         },
         {
           id: 3,
           title: "Passing Props",
+          likes: 0,
         },
       ],
     };
@@ -30,6 +40,12 @@ export default {
   components: {
     ButtonCounter,
     Post,
+  },
+  methods: {
+    onLikeClick(id) {
+      const post = this.posts.find((post) => post.id === id);
+      post.likes += 1;
+    },
   },
 };
 </script>

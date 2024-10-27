@@ -3,18 +3,19 @@
     <div class="title">{{ title }}</div>
 
     <div class="btn">
-      <ButtonCounter />
+      <Button @onAction="() => $emit('onLikeClick', id)" text="Like" />
+      <div class="likes">Likes: {{ likes }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import ButtonCounter from "./ButtonCounter.vue";
+import Button from "./Button.vue";
 
 export default {
-  props: ["title"],
+  props: ["id", "title", "likes"],
   components: {
-    ButtonCounter,
+    Button,
   },
 };
 </script>
@@ -32,6 +33,9 @@ export default {
 }
 
 .btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-top: 16px;
 }
 </style>
