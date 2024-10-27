@@ -12,15 +12,16 @@ export default {
   <button @click="count++" class="btn">Button clicked: {{ count }}</button>
 </template>
 
-<style>
+<style scoped>
 .btn {
-  font-size: 16px;
+  display: block;
+  font-size: 14px;
   font-weight: bold;
   color: #fff;
   background: #005bff;
   border: none;
-  padding: 15px 30px;
-  border-radius: 20px;
+  padding: 10px 15px;
+  border-radius: 16px;
   cursor: pointer;
 }
 </style>
