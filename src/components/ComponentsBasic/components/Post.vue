@@ -1,6 +1,9 @@
 <template>
   <div class="post">
     <div class="title">{{ title }}</div>
+    <div class="description">
+      <slot />
+    </div>
 
     <div class="btn">
       <Button @onAction="() => $emit('onLikeClick', id)" text="Like" />
@@ -37,5 +40,10 @@ export default {
   justify-content: space-between;
   align-items: flex-end;
   margin-top: 16px;
+}
+
+.description {
+  margin-top: 6px;
+  font-size: 12px;
 }
 </style>

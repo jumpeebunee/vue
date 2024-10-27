@@ -7,7 +7,9 @@
       :title="post.title"
       :likes="post.likes"
       @onLikeClick="onLikeClick"
-    />
+    >
+      <div v-if="post.description">{{ post.description }}</div>
+    </Post>
   </div>
 </template>
 
@@ -22,6 +24,8 @@ export default {
         {
           id: 1,
           title: "Defining a Component",
+          description:
+            "When using a build step, we typically define each Vue component in a dedicated file using the .vue extension - known as a Single-File Component (SFC for short)",
           likes: 2,
         },
         {
