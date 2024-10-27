@@ -1,63 +1,49 @@
 <template>
-  <div class="content">
-    <Post
-      v-for="post in posts"
-      :id="post.id"
-      :key="post.id"
-      :title="post.title"
-      :likes="post.likes"
-      @onLikeClick="onLikeClick"
-    >
-      <div v-if="post.description">{{ post.description }}</div>
-    </Post>
+  <div>
+    <div class="tabs">
+      <button
+        @click="() => changeTab(key)"
+        v-for="(value, key) in tabs"
+        :key="value"
+      >
+        {{ value }}
+      </button>
+    </div>
+
+    <component :is="tab" />
   </div>
 </template>
 
 <script>
-import ButtonCounter from "./components/ButtonCounter.vue";
 import Post from "./components/Post.vue";
+import Home from "./components/tabs/Home.vue";
+import Posts from "./components/tabs/Posts.vue";
 
 export default {
   data() {
     return {
-      posts: [
-        {
-          id: 1,
-          title: "Defining a Component",
-          description:
-            "When using a build step, we typically define each Vue component in a dedicated file using the .vue extension - known as a Single-File Component (SFC for short)",
-          likes: 2,
-        },
-        {
-          id: 2,
-          title: "Using a Component",
-          likes: 0,
-        },
-        {
-          id: 3,
-          title: "Passing Props",
-          likes: 0,
-        },
-      ],
+      tab: "Home",
+      tabs: {
+        home: "Home",
+        posts: "Posts",
+      },
     };
   },
   components: {
-    ButtonCounter,
+    Home,
+    Posts,
     Post,
   },
   methods: {
-    onLikeClick(id) {
-      const post = this.posts.find((post) => post.id === id);
-      post.likes += 1;
+    changeTab(tab) {
+      this.tab = this.tabs[tab];
     },
   },
 };
 </script>
 
-<style>
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+<style scoped>
+.tabs {
+  margin-bottom: 16px;
 }
 </style>
